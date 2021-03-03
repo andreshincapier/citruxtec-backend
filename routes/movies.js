@@ -18,6 +18,46 @@ function moviesApi(app) {
             next(error)
         }
     });
+
+
+    router.get("/:movieId", async function (req, res, next) {
+        try {
+            const movies = await Promise.resolve(moviesMock[0]);
+            res.status(200).json({
+                data: movies,
+                message: 'Movie retrieve'
+            })
+        } catch (error) {
+            next(error)
+        }
+    });
+
+    router.post("/:movieId", async function (req, res, next) {
+        try {
+            const createMovie = await Promise.resolve(moviesMock[0].id);
+            res.status(201).json({
+                data: createMovie,
+                message: 'Create movie'
+            })
+        } catch (error) {
+            next(error)
+        }
+    });
+
+    router.put("/:movieId", async function (req, res, next) {
+        try {
+            const updateMovie = await Promise.resolve(moviesMock[0].id);
+            res.status(201).json({
+                data: updateMovie,
+                message: 'Movie updated'
+            })
+        } catch (error) {
+            next(error)
+        }
+    });
+
+
 }
+
 
 module.exports = moviesApi;
